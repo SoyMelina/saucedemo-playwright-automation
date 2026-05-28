@@ -1,5 +1,10 @@
 # SauceDemo Automation Project
 
+## CI/CD Automation
+Proyecto configurado con GitHub Actions para ejecución automática de pruebas Playwright.
+
+---
+
 Proyecto de automatización QA realizado con Playwright y JavaScript utilizando la aplicación SauceDemo.
 
 ## Tecnologías utilizadas
@@ -72,6 +77,12 @@ npx playwright test --grep @checkout
 ```
 
 ## Reportes
+
+## Evidencia de ejecución
+
+### Playwright HTML Report
+
+![Playwright Report](docs/screenshots/playwright-report.png)
 
 Generar reporte HTML:
 

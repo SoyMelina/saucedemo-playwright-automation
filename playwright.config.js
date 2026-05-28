@@ -16,7 +16,7 @@ export default defineConfig({
 
   use: {
     trace: 'on-first-retry',
-    headless: false,
+    headless: !!process.env.CI,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },

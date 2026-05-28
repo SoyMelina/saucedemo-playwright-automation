@@ -4,12 +4,19 @@ const { ProductsPage } = require('../pages/ProductsPage');
 const { CartPage } = require('../pages/CartPage');
 const { users } = require('../data/users');
 
-test('@cart Test 9: Agregar producto al carrito', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  const productsPage = new ProductsPage(page);
 
   await loginPage.goto();
-  await loginPage.login(users.standard.username, users.standard.password);
+
+  await loginPage.login(
+    users.standard.username,
+    users.standard.password
+  );
+});
+
+test('@cart Test 9: Agregar producto al carrito', async ({ page }) => {
+  const productsPage = new ProductsPage(page);
 
   await productsPage.addBackpackToCart();
 
@@ -17,12 +24,8 @@ test('@cart Test 9: Agregar producto al carrito', async ({ page }) => {
 });
 
 test('@cart Test 10: Validación de producto agregado al carrito', async ({ page }) => {
-  const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   const cartPage = new CartPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(users.standard.username, users.standard.password);
 
   await productsPage.addBackpackToCart();
   await productsPage.goToCart();
@@ -31,12 +34,8 @@ test('@cart Test 10: Validación de producto agregado al carrito', async ({ page
 });
 
 test('@cart Test 11: Navegación al carrito', async ({ page }) => {
-  const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   const cartPage = new CartPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(users.standard.username, users.standard.password);
 
   await productsPage.goToCart();
 
@@ -44,12 +43,8 @@ test('@cart Test 11: Navegación al carrito', async ({ page }) => {
 });
 
 test('@cart Test 12: Eliminación de producto del carrito', async ({ page }) => {
-  const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   const cartPage = new CartPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(users.standard.username, users.standard.password);
 
   await productsPage.addBackpackToCart();
   await productsPage.goToCart();
@@ -60,12 +55,8 @@ test('@cart Test 12: Eliminación de producto del carrito', async ({ page }) => 
 });
 
 test('@cart Test 13: Validación de carrito vacío', async ({ page }) => {
-  const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   const cartPage = new CartPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(users.standard.username, users.standard.password);
 
   await productsPage.goToCart();
 
